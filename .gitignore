@@ -7,4 +7,11 @@ __pycache__
 *.pyo
 
 # Ignore datasets
-data/
+data/tmdb_5000_movies.csv
+data/tmdb_5000_credits.csv
+data/ratings_sample.csv
+data/ratings.csv
+data/links.csv
+data/links_small.csv
+data/genome_tags.csv
+data/genome_scores.csv
