@@ -18,34 +18,32 @@ def load_data():
     local_movies_path = os.path.join(base_path,"data", "tmdb_5000_movies.csv")
     local_credits_path = os.path.join(base_path, "data", "tmdb_5000_credits.csv")
 
-    # Online URLs (replace FILE_ID with your actual file IDs)
     online_movies_url = "https://drive.google.com/uc?id=1eyyqWpMl9_4_F-GDC0amtI-RvQwaPaLq"
     online_credits_url = "https://drive.google.com/uc?id=1ulU3ghueTbpDhCGHbZtmPrLg3i_9qPwn"
 
 
     try:
-        # Try loading local files first
+       
         movies = pd.read_csv(local_movies_path)
         credits = pd.read_csv(local_credits_path)
         st.write("Loaded dataset locally ✅")
     except FileNotFoundError:
-        # Fallback to Google Drive
+       
         movies = pd.read_csv(online_movies_url)
         credits = pd.read_csv(online_credits_url)
         st.write("Loaded dataset from Google Drive ✅")
 
-    # Compute similarity or return placeholder
-    similarity = None  # Replace with your similarity computation if needed
+    # Compute similarity 
+    similarity = None  
 
 
-    # Merge both datasets
+   
     movies = movies.merge(credits, on="title")
 
-    # Keep only necessary columns
     movies = movies[["movie_id", "title", "overview", "genres", "keywords", "cast", "crew"]]
     movies.dropna(inplace=True)
 
-    # Convert stringified lists into Python objects
+    
     def convert(obj):
         L = []
         for i in ast.literal_eval(obj):
@@ -61,7 +59,7 @@ def load_data():
 
     movies["genres"] = movies["genres"].apply(convert)
     movies["keywords"] = movies["keywords"].apply(convert)
-    movies["cast"] = movies["cast"].apply(lambda x: convert(x)[:3])  # top 3 actors
+    movies["cast"] = movies["cast"].apply(lambda x: convert(x)[:3]) 
     movies["crew"] = movies["crew"].apply(fetch_director)
 
     # Create tags
@@ -74,7 +72,7 @@ def load_data():
     )
     new_df = movies[["movie_id", "title", "tags"]]
 
-    # Convert tags into strings
+    
     new_df["tags"] = new_df["tags"].apply(lambda x: " ".join(x).lower())
 
     # Vectorize
