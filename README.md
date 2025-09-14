@@ -13,6 +13,17 @@ It suggests similar movies based on overview and genres using **cosine similarit
 - Easy to deploy and extend with more data.
 
 ---
+ Dataset:
+ 
+---
+
+## 📊 Dataset
+
+This project uses the **TMDB 5000 Movie Dataset** available on Kaggle:  
+🔗 [Download Dataset](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
+
+After downloading, place the files inside a folder named `data/` in your project directory:
+
 
 ## 🛠️ Tech Stack
 - **Python 3.x**
