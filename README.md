@@ -16,6 +16,9 @@ It suggests similar movies based on overview and genres using **cosine similarit
  Dataset:
  
 ---
+LIVE DEMO :
+https://movie-recommender-by-aayush.streamlit.app/
+
 
 ## 📊 Dataset
 
@@ -68,17 +71,6 @@ Hugging Face Spaces: https://huggingface.co/spaces
 
 Heroku/Render: Requires Procfile & Docker setup.
 
-
-📌 Example
-
-Input: The Dark Knight
-Output Recommendations:
-
-Batman Begins
-The Dark Knight Rises
-Man of Steel
-Inception
-Watchmen
 
 
 
