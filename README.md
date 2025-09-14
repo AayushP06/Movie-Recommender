@@ -1,0 +1,73 @@
+# Movie-Recommender
+# 🎬 Movie Recommender System
+
+A simple **content-based movie recommendation system** built with **Python, Scikit-learn, and Streamlit**.  
+It suggests similar movies based on overview and genres using **cosine similarity**.
+
+---
+
+## 🚀 Features
+- Search any movie title.
+- Get top N similar movies.
+- Clean and interactive UI built with Streamlit.
+- Easy to deploy and extend with more data.
+
+---
+
+## 🛠️ Tech Stack
+- **Python 3.x**
+- **Pandas, Numpy** → Data handling
+- **Scikit-learn** → Vectorization & similarity
+- **Streamlit** → Web app framework
+
+---
+
+## ⚙️ Installation
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-username/movie-recommender.git
+   cd movie-recommender
+
+2.Create a virtual environment (recommended):
+  ```bash
+  python -m venv venv
+  source venv/bin/activate   # For Linux/Mac
+  venv\Scripts\activate      # For Windows
+  pip install -r requirements.txt
+  streamlit run app.py
+```
+
+🧠 How It Works
+
+Movie overviews + genres are converted into text "tags".
+
+CountVectorizer creates vector embeddings.
+
+cosine_similarity finds closest vectors.
+
+Top-N similar movies are shown as recommendations.
+
+
+🚀 Deployment
+
+Streamlit Cloud: https://streamlit.io/cloud
+
+Hugging Face Spaces: https://huggingface.co/spaces
+
+Heroku/Render: Requires Procfile & Docker setup.
+
+
+📌 Example
+
+Input: The Dark Knight
+Output Recommendations:
+
+Batman Begins
+The Dark Knight Rises
+Man of Steel
+Inception
+Watchmen
+
+
+
