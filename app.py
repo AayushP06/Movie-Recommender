@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import ast
@@ -11,8 +12,31 @@ st.set_page_config(page_title="Movie Recommender", page_icon="🎬", layout="wid
 # ----------------------------
 @st.cache_data
 def load_data():
-    movies = pd.read_csv("data/tmdb_5000_movies.csv")
-    credits = pd.read_csv("data/tmdb_5000_credits.csv")
+
+    base_path = os.path.dirname(__file__)
+
+    local_movies_path = os.path.join(base_path,"data", "tmdb_5000_movies.csv")
+    local_credits_path = os.path.join(base_path, "data", "tmdb_5000_credits.csv")
+
+    # Online URLs (replace FILE_ID with your actual file IDs)
+    online_movies_url = "https://drive.google.com/uc?id=1eyyqWpMl9_4_F-GDC0amtI-RvQwaPaLq"
+    online_credits_url = "https://drive.google.com/uc?id=1ulU3ghueTbpDhCGHbZtmPrLg3i_9qPwn"
+
+
+    try:
+        # Try loading local files first
+        movies = pd.read_csv(local_movies_path)
+        credits = pd.read_csv(local_credits_path)
+        st.write("Loaded dataset locally ✅")
+    except FileNotFoundError:
+        # Fallback to Google Drive
+        movies = pd.read_csv(online_movies_url)
+        credits = pd.read_csv(online_credits_url)
+        st.write("Loaded dataset from Google Drive ✅")
+
+    # Compute similarity or return placeholder
+    similarity = None  # Replace with your similarity computation if needed
+
 
     # Merge both datasets
     movies = movies.merge(credits, on="title")
